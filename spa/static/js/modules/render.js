@@ -1,3 +1,5 @@
+import { rounding } from './rounding.js'
+
 const header = document.getElementsByTagName('header')[0]
 const body = document.getElementsByTagName('body')[0]
 
@@ -11,12 +13,9 @@ export function render(data) {
   nav.appendChild(ul)
   header.appendChild(nav)
 
-  Object.keys(data).map(key => {
-    // console.log(data[key].id)
+  Object.keys(data).map((key, index) => {
     let li = document.createElement('li')
-    // let link = document.createElement('a')
     li.textContent = data[key].name
-    // li.appendChild(link)
     ul.appendChild(li)
   })
 
@@ -39,12 +38,13 @@ function renderDetailPage(pick, data, nav) {
   let renderData = Object.values(data).map(key => key.name == pick ? key : false).filter(item => typeof item === 'object')[0]
   console.log(renderData)
 
-
   const container = document.createElement('div')
   const backButton = document.createElement('button')
   const image = document.createElement('img')
   const title = document.createElement('h1')
   const symbol = document.createElement('span')
+  const price = document.createElement('span')
+  const percentage = document.createElement('span')
   const description = document.createElement('p')
   const website = document.createElement('a')
   const github = document.createElement('a')
@@ -53,14 +53,18 @@ function renderDetailPage(pick, data, nav) {
   image.src = renderData.logo
   title.textContent = renderData.name
   symbol.textContent = renderData.symbol
+  price.textContent = '$' + rounding(renderData.quote[0].price)
+  percentage.textContent = rounding(renderData.quote[0].percent_change_24h) > 0 ? '📈 ' + rounding(renderData.quote[0].percent_change_24h) + '%' : '📉' + rounding(renderData.quote[0].percent_change_24h) + '%'
   description.textContent = renderData.description
   website.textContent = 'Website', website.setAttribute('href', Object.values(renderData.urls.website))
   github.textContent = 'Github', github.setAttribute('href', Object.values(renderData.urls.source_code))
-  
+
   container.appendChild(backButton)
   container.appendChild(image)
   container.appendChild(title)
   container.appendChild(symbol)
+  container.appendChild(price)
+  container.appendChild(percentage)
   container.appendChild(description)
   container.appendChild(website)
   container.appendChild(github)
@@ -68,6 +72,7 @@ function renderDetailPage(pick, data, nav) {
   Object.values(renderData['tag-names']).map(key => {
     const tag = document.createElement('span')
     tag.textContent = key
+    tag.setAttribute('class', 'tag')
     container.appendChild(tag)
   })
 
