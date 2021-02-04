@@ -14,14 +14,31 @@ export function render(data) {
   header.appendChild(nav)
 
   Object.keys(data).map((key, index) => {
-    let li = document.createElement('li')
-    li.textContent = data[key].name
+    const li = document.createElement('li')
+    const subContainer = document.createElement('div')
+    const image = document.createElement('img')
+    const title = document.createElement('h1')
+    const price = document.createElement('p')
+    const percentage = document.createElement('p')
+    
+    title.textContent = data[key].name
+    image.src = data[key].logo
+    price.textContent = '$' + rounding(data[key].quote[0].price)
+    percentage.textContent = rounding(data[key].quote[0].percent_change_24h) > 0 ? '📈 ' + rounding(data[key].quote[0].percent_change_24h) + '%' : '📉' + rounding(data[key].quote[0].percent_change_24h) + '%'
+
+
+    subContainer.appendChild(image)
+    subContainer.appendChild(title)
+    subContainer.appendChild(price)
+    subContainer.appendChild(percentage)
+    li.appendChild(subContainer)
     ul.appendChild(li)
   })
 
   document.getElementsByTagName('ul')[0]
     .addEventListener('click', e => {
-      renderDetailPage(e.target.innerText, data, nav)
+     let div = e.path.map(key => key.nodeName == "DIV" ? key : false).filter(item => typeof item === 'object')[0]
+      renderDetailPage(div.childNodes[1].textContent, data, nav)
     })
 }
 
