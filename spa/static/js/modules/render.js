@@ -21,16 +21,18 @@ export function render(data) {
     const price = document.createElement('p')
     const percentage = document.createElement('p')
     
+    li.setAttribute('card', rounding(data[key].quote[0].percent_change_24h) > 0 ? 'green' : 'red')
     title.textContent = data[key].name
     image.src = data[key].logo
     price.textContent = '$' + rounding(data[key].quote[0].price)
-    percentage.textContent = rounding(data[key].quote[0].percent_change_24h) > 0 ? '📈 ' + rounding(data[key].quote[0].percent_change_24h) + '%' : '📉' + rounding(data[key].quote[0].percent_change_24h) + '%'
+    price.setAttribute('price', rounding(data[key].quote[0].percent_change_24h) > 0 ? 'green' : 'red')
+    // percentage.textContent = rounding(data[key].quote[0].percent_change_24h) > 0 ? '📈 ' + rounding(data[key].quote[0].percent_change_24h) + '%' : '📉' + rounding(data[key].quote[0].percent_change_24h) + '%'
 
 
     subContainer.appendChild(image)
     subContainer.appendChild(title)
     subContainer.appendChild(price)
-    subContainer.appendChild(percentage)
+    // subContainer.appendChild(percentage)
     li.appendChild(subContainer)
     ul.appendChild(li)
   })
