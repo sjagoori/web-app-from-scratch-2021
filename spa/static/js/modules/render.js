@@ -40,19 +40,30 @@ function renderDetailPage(pick, data, nav) {
   const title = document.createElement('h1')
   const symbol = document.createElement('span')
   const description = document.createElement('p')
+  const website = document.createElement('a')
+  const github = document.createElement('a')
 
   backButton.textContent = 'Back'
   image.src = renderData.logo
   title.textContent = renderData.name
   symbol.textContent = renderData.symbol
   description.textContent = renderData.description
-
-
+  website.textContent = 'Website', website.setAttribute('href', Object.values(renderData.urls.website))
+  github.textContent = 'Github', github.setAttribute('href', Object.values(renderData.urls.source_code))
+  
   container.appendChild(backButton)
   container.appendChild(image)
   container.appendChild(title)
   container.appendChild(symbol)
   container.appendChild(description)
+  container.appendChild(website)
+  container.appendChild(github)
+
+  Object.values(renderData['tag-names']).map(key => {
+    const tag = document.createElement('span')
+    tag.textContent = key
+    container.appendChild(tag)
+  })
 
   body.appendChild(container)
 
