@@ -1,5 +1,6 @@
 const header = document.getElementsByTagName('header')[0]
 const body = document.getElementsByTagName('body')[0]
+
 /**
  * Funtion appends rendered data to header.
  * @param {Object} data 
@@ -25,7 +26,12 @@ export function render(data) {
     })
 }
 
-
+/**
+ * Function renders the detail page for given coin 
+ * @param {String} pick picked option from the menu
+ * @param {Object} data dataset with information regarding the picked value
+ * @param {HTMLElement} nav the main menu
+ */
 function renderDetailPage(pick, data, nav) {
   console.warn('detail page rendered')
   nav.style.display = 'none'
