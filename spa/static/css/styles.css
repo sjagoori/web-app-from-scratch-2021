@@ -36,6 +36,7 @@ header nav ul li:nth-child(3n) {
 }
 
 header nav ul li{
+  cursor: pointer;
   max-height: 500px;
   max-width: 100%;
   padding: 15px 0px;
