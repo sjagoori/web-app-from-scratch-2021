@@ -26,13 +26,11 @@ export function render(data) {
     image.src = data[key].logo
     price.textContent = '$' + rounding(data[key].quote[0].price)
     price.setAttribute('price', rounding(data[key].quote[0].percent_change_24h) > 0 ? 'green' : 'red')
-    // percentage.textContent = rounding(data[key].quote[0].percent_change_24h) > 0 ? '📈 ' + rounding(data[key].quote[0].percent_change_24h) + '%' : '📉' + rounding(data[key].quote[0].percent_change_24h) + '%'
-
 
     subContainer.appendChild(image)
     subContainer.appendChild(title)
     subContainer.appendChild(price)
-    // subContainer.appendChild(percentage)
+
     li.appendChild(subContainer)
     ul.appendChild(li)
   })
@@ -51,11 +49,9 @@ export function render(data) {
  * @param {HTMLElement} nav the main menu
  */
 function renderDetailPage(pick, data, nav) {
-  console.warn('detail page rendered')
   nav.style.display = 'none'
 
   let renderData = Object.values(data).map(key => key.name == pick ? key : false).filter(item => typeof item === 'object')[0]
-  console.log(renderData)
 
   const container = document.createElement('div')
   const backButton = document.createElement('button')
@@ -96,7 +92,6 @@ function renderDetailPage(pick, data, nav) {
   })
 
   body.appendChild(container)
-
 
   document.getElementsByTagName('button')[0]
     .addEventListener('click', () => {
