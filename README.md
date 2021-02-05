@@ -7,6 +7,15 @@ For this class, this repo will contain a SPA in the folder `/spa`. The website i
 # Concept
 The main objective of this project is to render data from an API endpoint so, given what is required, I've picked the topic of cryptocurrency. Specifically the pricing and general information along with the contact information of each. For the data I will use CoinmarketCap's API, you can find their documentation [here](https://coinmarketcap.com/api/documentation/v1/). The landing of this concept will display a top list of cryptocurrencies based on their market cap. Once selected, it brings you to a detail page where you will find additional information. The used endpoints for this project are `/listings` for the top lists and `/info` for the additional infomation for each coin in the toplist. 
 
+# Features and timeline
+- [x] Data fetching
+- [x] Modular code
+- [x] Caching API
+- [x] Dynamic styling
+  - [ ] Seperate styling files
+- [x] Dynamic detail page
+  - [ ] Styling
+
 
 <details>
   <summary>Old readme</summary>
