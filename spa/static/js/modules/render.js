@@ -51,9 +51,9 @@ export function render(data) {
 
 /**
  * Function renders the detail page for given coin 
- * @param {String} pick picked option from the menu
- * @param {Object} data dataset with information regarding the picked value
- * @param {HTMLElement} nav the main menu
+ * @param {String} pick - picked option from the menu
+ * @param {Object} data - dataset with information regarding the picked value
+ * @param {HTMLElement} nav - the main menu
  */
 function renderDetailPage(pick, data, nav) {
   nav.style.display = 'none'
@@ -104,22 +104,11 @@ function renderDetailPage(pick, data, nav) {
     tag.textContent = key
     tag.setAttribute('class', 'tag')
     tag.style.backgroundColor = getColors()[index]
-    // console.log(Object.values(a).map((key, index) => key))
     tagContainer.appendChild(tag)
   })
 
   container.appendChild(tagContainer)
   body.appendChild(container)
-
-  let a = Object.values(document.getElementsByTagName('a')).map(key => key.innerText == 'back' ? key : false).filter(elem => typeof elem == 'object')[0]
-  console.log(a)
-  // document.getElementsByTagName('a')[2]
-  // document.getElementsByTagName('button')[0]
-  //   .addEventListener('click', (e) => {
-  //     container.remove()
-  //     nav.style.display = 'block'
-  //   })
-
 }
 
 /**
