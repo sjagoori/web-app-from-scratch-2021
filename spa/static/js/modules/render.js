@@ -41,6 +41,7 @@ export function render(data) {
       let div = e.path.map(key => key.nodeName == "DIV" ? key : false).filter(item => typeof item === 'object')[0]
       renderDetailPage(div.childNodes[1].textContent, data, nav)
     })
+  return true;
 }
 
 /**
