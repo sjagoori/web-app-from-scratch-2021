@@ -1,5 +1,5 @@
 import { getData } from './modules/api.js'
-import { render } from './modules/render.js'
+import { render, updateUI } from './modules/render.js'
 const loader = document.getElementsByTagName('main')[0]
 
 async function main() {
@@ -17,6 +17,15 @@ async function main() {
   ({ ...infoList.data.data, merged }, delete infoList.data.data.merged)
 
   render(infoList.data.data) ? loader.style.display = 'none' : null
+  
+  routie({
+    info: () => {
+      updateUI('info');
+    },
+    home: () => [
+      updateUI('toplist')
+    ]
+  })
 }
 
 main()
