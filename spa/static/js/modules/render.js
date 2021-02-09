@@ -17,6 +17,8 @@ export function render(data) {
 
   Object.keys(data).map((key, index) => {
     const li = document.createElement('li')
+    const link = document.createElement('a')
+    link.href = '#' + data[key].name
     const subContainer = document.createElement('div')
     const image = document.createElement('img')
     const title = document.createElement('h1')
@@ -27,13 +29,15 @@ export function render(data) {
     title.textContent = data[key].name
     image.src = data[key].logo
     price.textContent = '$' + rounding(data[key].quote[0].price)
-    price.setAttribute('price', rounding(data[key].quote[0].percent_change_24h) > 0 ? 'green' : 'red')
+    percentage.setAttribute('price', rounding(data[key].quote[0].percent_change_24h) > 0 ? 'green' : 'red')
+    percentage.textContent = rounding(data[key].quote[0].percent_change_24h) > 0 ? '📈 ' + rounding(data[key].quote[0].percent_change_24h) + '%' : '📉' + rounding(data[key].quote[0].percent_change_24h) + '%'
 
     subContainer.appendChild(image)
     subContainer.appendChild(title)
-    subContainer.appendChild(price)
+    subContainer.appendChild(percentage)
 
-    li.appendChild(subContainer)
+    link.appendChild(subContainer)
+    li.appendChild(link)
     ul.appendChild(li)
   })
 
@@ -57,9 +61,9 @@ function renderDetailPage(pick, data, nav) {
   let renderData = Object.values(data).map(key => key.name == pick ? key : false).filter(item => typeof item === 'object')[0]
 
   const container = document.createElement('div')
-  container.setAttribute('data-route', 'detailPage')
+  container.setAttribute('data-route', 'detailpage')
   const tagContainer = document.createElement('div')
-  const backButton = document.createElement('button')
+  const backButton = document.createElement('a')
   const image = document.createElement('img')
   const title = document.createElement('h1')
   const symbol = document.createElement('span')
@@ -72,11 +76,13 @@ function renderDetailPage(pick, data, nav) {
 
   container.setAttribute('class', 'detail-card')
   backButton.textContent = 'Back'
+  backButton.setAttribute('href', '#home')
   image.src = renderData.logo
   title.textContent = renderData.name
   symbol.textContent = '$' + renderData.symbol
   price.textContent = '$' + rounding(renderData.quote[0].price)
   price.setAttribute('price', rounding(renderData.quote[0].percent_change_24h) > 0 ? 'green' : 'red')
+  percentage.setAttribute('price', rounding(renderData.quote[0].percent_change_24h) > 0 ? 'green' : 'red')
   percentage.textContent = rounding(renderData.quote[0].percent_change_24h) > 0 ? '📈 ' + rounding(renderData.quote[0].percent_change_24h) + '%' : '📉' + rounding(renderData.quote[0].percent_change_24h) + '%'
   description.textContent = renderData.description
   website.textContent = 'Website', website.setAttribute('href', Object.values(renderData.urls.website))
@@ -105,11 +111,14 @@ function renderDetailPage(pick, data, nav) {
   container.appendChild(tagContainer)
   body.appendChild(container)
 
-  document.getElementsByTagName('button')[0]
-    .addEventListener('click', () => {
-      container.remove()
-      nav.style.display = 'block'
-    })
+  let a = Object.values(document.getElementsByTagName('a')).map(key => key.innerText == 'back' ? key : false).filter(elem => typeof elem == 'object')[0]
+  console.log(a)
+  // document.getElementsByTagName('a')[2]
+  // document.getElementsByTagName('button')[0]
+  //   .addEventListener('click', (e) => {
+  //     container.remove()
+  //     nav.style.display = 'block'
+  //   })
 
 }
 
