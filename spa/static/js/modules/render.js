@@ -10,6 +10,7 @@ const body = document.getElementsByTagName('body')[0]
  */
 export function render(data) {
   const nav = document.createElement('nav')
+  nav.setAttribute('data-route', 'toplist')
   const ul = document.createElement('ul')
   nav.appendChild(ul)
   header.appendChild(nav)
@@ -36,7 +37,7 @@ export function render(data) {
     ul.appendChild(li)
   })
 
-  document.getElementsByTagName('ul')[0]
+  document.getElementsByTagName('ul')[1]
     .addEventListener('click', e => {
       let div = e.path.map(key => key.nodeName == "DIV" ? key : false).filter(item => typeof item === 'object')[0]
       renderDetailPage(div.childNodes[1].textContent, data, nav)
@@ -109,4 +110,16 @@ function renderDetailPage(pick, data, nav) {
       nav.style.display = 'block'
     })
 
+}
+
+/**
+ * Funtion displays selected (parent)element and hides others.
+ * @param {String} route - route string
+ */
+export function updateUI(route) {
+  let activeSection = document.querySelector(`[data-route=${route}]`);
+  let bodyContent = document.querySelectorAll('[data-route]')
+  Object.values(bodyContent).map((key) => key.attributes[0].textContent != 'nav' ? key.style.display = 'none' : false)
+  activeSection.style.display = 'block'
+  console.log(route)
 }
