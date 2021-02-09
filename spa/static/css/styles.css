@@ -49,6 +49,7 @@ header nav:nth-of-type(2) {
 }
 
 header nav:nth-of-type(2) ul {
+  margin-top: 3rem;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

@@ -12,7 +12,29 @@ export function render(data) {
   const nav = document.createElement('nav')
   nav.setAttribute('data-route', 'toplist')
   const ul = document.createElement('ul')
+
+  const descContainer = document.createElement('div')
+  const title = document.createElement('h1')
+  title.textContent = 'CoinMarketCap'
+  const lead = document.createElement('p')
+  lead.textContent = 'This website displays the top 12 cryptocurrencies by market cap in biggest-to-smallest order.'
+
+  const priceUp = document.createElement('p')
+  priceUp.textContent = 'Green underline = stonk value has increased'
+  priceUp.setAttribute('price', 'green')
+
+  const priceDown = document.createElement('p')
+  priceDown.textContent = 'Red underline = stonk value has decreased'
+  priceDown.setAttribute('price', 'red')
+
+  descContainer.appendChild(title)
+  descContainer.appendChild(lead)
+  descContainer.appendChild(priceUp)
+  descContainer.appendChild(priceDown)
+
+  nav.appendChild(descContainer)
   nav.appendChild(ul)
+  
   header.appendChild(nav)
 
   Object.keys(data).map((key, index) => {
