@@ -57,6 +57,7 @@ function renderDetailPage(pick, data, nav) {
   let renderData = Object.values(data).map(key => key.name == pick ? key : false).filter(item => typeof item === 'object')[0]
 
   const container = document.createElement('div')
+  container.setAttribute('data-route', 'detailPage')
   const tagContainer = document.createElement('div')
   const backButton = document.createElement('button')
   const image = document.createElement('img')
