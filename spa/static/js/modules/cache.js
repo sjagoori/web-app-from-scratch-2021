@@ -1,9 +1,10 @@
 /**
- * Function sets data in localstorage
+ * Function sets data in localstorage, and removes existing data
  * @param {String} key key
  * @param {Object} data data
  */
 export function setCache(key, data){
+  localStorage.removeItem(key);
   localStorage.setItem(key, JSON.stringify(data))
 }
 
