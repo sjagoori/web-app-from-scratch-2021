@@ -48,3 +48,5 @@ The main objective of this project is to render data from an API endpoint so, gi
 
 ## 📝 License
 [GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
+
+![](https://visitor-badge.laobi.icu/badge?page_id=sjagoori.web-app-from-scratch-2021)
