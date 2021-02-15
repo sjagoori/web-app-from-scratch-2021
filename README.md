@@ -1,4 +1,4 @@
-# web-app-from-scratch-2021
+# 👋 Welcome to Web-App-From-Fcratch!
 _Minor Web Design & Development, HvA 2021_
 
 ![](https://github.com/sjagoori/web-app-from-scratch-2021/blob/master/assets/toplist.png)
