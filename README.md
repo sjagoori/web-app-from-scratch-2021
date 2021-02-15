@@ -18,7 +18,7 @@ _Minor Web Design & Development, HvA 2021_
 [Link](https://web-app-from-scratch-2021-one.vercel.app/)
 
 ## 📓 The assignment 
-For this class, this repo will contain a SPA in the folder `/spa`. The website is written in plain javascript withtout the use of external tools or libraries (with the exception of [Routie](https://github.com/jgallen23/routie). Furthermore, it fetches data from an API and renders it using several DOM manipulation techniques.
+For this class, this repo will be used to create a single page application. The project has to be written in plain javascript without the help of external libraries (with the exception of [Routie](https://github.com/jgallen23/routie). Furthermore, it has to use an API to fetch data from and manipulate its return.
 
 ## 📸 Screenshots
 ![](https://github.com/sjagoori/web-app-from-scratch-2021/blob/master/assets/toplist.png)
