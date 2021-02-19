@@ -119,7 +119,7 @@ function renderDetailPage(pick, data, nav) {
   container.appendChild(finContainer)
   container.appendChild(description)
   container.appendChild(website)
-  container.appendChild(github)
+  github.getAttribute('href') != '' ? container.appendChild(github) : null
 
   Object.values(renderData['tag-names']).map((key, index) => {
     const tag = document.createElement('span')
