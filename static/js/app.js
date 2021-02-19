@@ -14,10 +14,10 @@ async function main() {
   });
 
   // merges newly made object to existing object, removes remaining object 
-  ({ ...infoList.data.data, merged }, delete infoList.data.data.merged)
+  let renderData = ({ ...infoList.data.data, merged }, delete infoList.data.data.merged) ? Object.values(infoList.data.data).sort((a, b) => b.quote[0].market_cap - a.quote[0].market_cap) : loader.textContent = 'Unable to fetch data'
 
-  render(infoList.data.data) ? loader.style.display = 'none' : null
-  
+  render(renderData) ? loader.style.display = 'none' : null
+
   routie({
     info: () => {
       updateUI('info');
