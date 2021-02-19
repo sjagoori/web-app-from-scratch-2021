@@ -142,5 +142,4 @@ export function updateUI(route) {
   let bodyContent = document.querySelectorAll('[data-route]')
   Object.values(bodyContent).map((key) => key.attributes[0].textContent != 'nav' ? key.style.display = 'none' : false)
   activeSection.style.display = 'block'
-  console.log(route)
 }
