@@ -9,10 +9,6 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-header {
-  /* margin-top: 20%; */
-}
-
 header nav:first-of-type {
   position: absolute;
   top: 20px;
@@ -31,7 +27,6 @@ header nav:first-of-type ul {
 
 header nav:first-of-type ul li { 
   padding: 0px 10px;
-  /* border: 1px solid green; */
 }
 
 header nav:first-of-type ul li a { 
